@@ -20,6 +20,7 @@ services:
       - secrets/prod.env
     environment:
       - JSON_FILE_PATH=secrets/list.json
+      - MODULE=fake
   echo:
     image: mendhak/http-https-echo
     ports:

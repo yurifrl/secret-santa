@@ -8,6 +8,7 @@ const parse = (_) => compose(
   ({ body, phone }) => ({ body, to: phone }),
 )
 const call = ({ client, from }) => (payload) => compose(
+  map(({ to, priceUnit, price }) => ({ to, priceUnit, price, payload })),
   map(pickAll(['to', 'priceUnit', 'price'])),
 )(client.sendSms(payload))
 const create = (_) => ({
