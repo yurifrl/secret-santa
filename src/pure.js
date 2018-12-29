@@ -22,9 +22,10 @@ const raffle = compose(
 )
 const defaultMessage = (finalMessage) => ({ giver, receiver, want }) => `Olá ${giver}, o seu amigo secreto é ${receiver}, aqui está a lista de desejos de ${receiver}: "${want}" ${finalMessage}`
 const noWantMessage = (finalMessage) => ({ giver, receiver }) => `Olá ${giver}, o seu amigo secreto é ${receiver}, ${finalMessage}`
-const createMessage = (finalMessage) => cond([
+const buildBody = (finalMessage) => cond([
   [ compose(not, isEmpty, prop('want')), defaultMessage(finalMessage) ],
   [ compose(isEmpty, prop('want')), noWantMessage(finalMessage) ],
 ])
+const createMessage = (message) => x => over(lensProp('body'), (_) => buildBody(message)(x), x)
 
 module.exports = { shuffle, raffle, createMessage }

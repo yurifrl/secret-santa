@@ -8,6 +8,7 @@ services:
       - secrets/test.env
     environment:
       - CSV_FILE_PATH=sample-list.json
+      - MODULE=fake
     volumes:
       - .:/usr/local/src
       - node_modules:/usr/local/src/node_modules

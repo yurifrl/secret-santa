@@ -7,6 +7,7 @@
     "@mugos/ftw": "^0.13.5",
     "@mugos/log": "^1.0.4",
     "fluture": "^10.3.0",
+    "nexmo": "^2.4.0",
     "ramda": "^0.26.1",
     "sanctuary": "^0.15.0",
     "twilio": "^3.26.0"
