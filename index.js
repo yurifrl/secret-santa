@@ -19,6 +19,10 @@ const config = {
     apiKey: envs('NEXMO_API_KEY'),
     apiSecret: envs('NEXMO_API_SECRET'),
     from: 'Nexmo'
+  },
+  modem: {
+       name: "/dev/ttyUSB0",
+    sms: "/dev/ttyUSB2"
   }
 }
 
