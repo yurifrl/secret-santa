@@ -12,10 +12,10 @@ test('Shuffle a list of people', t => {
   const result = raffle(list)
 
   t.deepEqual(result, [
-    { id: 1, receiver: 'Marie', giver: 'Yuri', phone: '555-555-552', want: ['nobel'] },
-    { id: 2, receiver: 'Yuri', giver: 'Malala', phone: '555-555-553', want: ['batata', 'water'] },
-    { id: 3, receiver: 'Malala', giver: 'Gabriel', phone: '556-555-551', want: ['human rights'] },
-    { id: 4, receiver: 'Gabriel', giver: 'Marie', phone: '555-555-555', want: ['coca'] }
+    { id: 2, receiver: 'Marie', giver: 'Yuri', phone: '555-555-552', want: ['nobel'] },
+    { id: 3, receiver: 'Yuri', giver: 'Malala', phone: '555-555-553', want: ['batata', 'water'] },
+    { id: 4, receiver: 'Malala', giver: 'Gabriel', phone: '556-555-551', want: ['human rights'] },
+    { id: 1, receiver: 'Gabriel', giver: 'Marie', phone: '555-555-555', want: ['coca'] }
   ])
 })
 

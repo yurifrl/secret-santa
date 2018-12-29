@@ -10,15 +10,15 @@ const shuffle = (seed) => compose(
   sort((a, b) => a.sort - b.sort),
   map((a) => ({ sort: seed(), value: a })),
 )
-const builder = ({ a, b }) => ({
-  id: a.id, giver: b.name, receiver: a.name,
-  phone: b.phone, want: a.want,
+const builder = ({ giver, receiver }) => ({
+  id: giver.id, giver: giver.name, receiver: receiver.name,
+  phone: giver.phone, want: receiver.want,
 })
 const raffle = compose(
   map(builder),
-  ({ a, b, size }) => map((i) => ({ a: a[i], b: b[i] }), size),
-  ({ a, b }) => ({ a, b, size: range(0, length(a)) }),
-  x => ({ a: x, b: append(head(x), tail(x)) }),
+  ({ giver, receiver, size }) => map((i) => ({ giver: giver[i], receiver: receiver[i] }), size),
+  ({ giver, receiver }) => ({ giver, receiver, size: range(0, length(giver)) }),
+  x => ({ receiver: x, giver: append(head(x), tail(x)) }),
 )
 const defaultMessage = (finalMessage) => ({ giver, receiver, want }) => `Olá ${giver}, o seu amigo secreto é "${receiver}", aqui está a lista de desejos de ${receiver}: "${want}" ${finalMessage}`
 const noWantMessage = (finalMessage) => ({ giver, receiver }) => `Olá ${giver}, o seu amigo secreto é "${receiver}", ${finalMessage}`
