@@ -7,7 +7,7 @@ services:
     env_file:
       - secrets/test.env
     environment:
-      - CSV_FILE_PATH=sample-list.json
+      - JSON_FILE_PATH=sample-list.json
       - MODULE=fake
     volumes:
       - .:/usr/local/src
@@ -17,7 +17,7 @@ services:
     env_file:
       - secrets/prod.env
     environment:
-      - CSV_FILE_PATH=secrets/list.json
+      - JSON_FILE_PATH=secrets/list.json
 
 volumes:
   node_modules:

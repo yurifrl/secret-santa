@@ -12,7 +12,7 @@ const { nexmoClient } = require('./modules/nexmo')
 const { shuffle, raffle, createMessage } = require('./pure')
 const { engine } = require('./engine')
 // Def Constants
-const MESSAGE = 'o minimo é de R$20 e o maximo R$50'
+const MESSAGE = 'o minimo é de R$20 reais e o maximo R$50 reais'
 // Def Functions Pure
 const fork = (x) => x.fork(console.error, console.log)
 const pickModule = cond([
