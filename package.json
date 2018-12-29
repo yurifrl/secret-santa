@@ -9,6 +9,7 @@
     "axios": "^0.18.0",
     "fluture": "^10.3.0",
     "ramda": "^0.26.1",
+    "random-seed": "^0.3.0",
     "sanctuary": "^0.15.0",
     "twilio": "^3.26.0"
   },

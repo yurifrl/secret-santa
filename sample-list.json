@@ -1,7 +1,9 @@
 [
-  { "id": 1, "name": "Marie", "phone": "+555-555-555", "want": ["nobel"] },
-  { "id": 2, "name": "Yuri", "phone": "+555-555-552", "want": ["batata", "water"] },
-  { "id": 3, "name": "Malala", "phone": "+555-555-553", "want": ["human rights"] },
-  { "id": 4, "name": "Gabriel", "phone": "+556-555-551", "want": ["coca"] },
-  { "id": 5, "name": "Gandi", "phone": "+556-555-559", "want": [] }
+  { "id": 1, "name": "Marie", "phone": "+15005550006", "want": ["nobel"], "deliver": true },
+  { "id": 2, "name": "Yuri", "phone": "+15005550006", "want": ["batata", "water"], "deliver": true },
+  { "id": 3, "name": "Malala", "phone": "+15005550006", "want": ["human rights"], "deliver": true },
+  { "id": 4, "name": "Gabriel", "phone": "+15005550006", "want": ["coca"], "deliver": true },
+  { "id": 5, "name": "Gandi", "phone": "+15005550006", "want": [], "deliver": false },
+  { "id": 6, "name": "Error 1", "phone": "+15005550000", "want": [], "deliver": true },
+  { "id": 7, "name": "Error 2", "phone": "+15005550001", "want": [], "deliver": true }
 ]

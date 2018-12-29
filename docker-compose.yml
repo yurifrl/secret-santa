@@ -9,6 +9,7 @@ services:
     environment:
       - JSON_FILE_PATH=sample-list.json
       - MODULE=fake
+      - SEED=1
     volumes:
       - .:/usr/local/src
       - node_modules:/usr/local/src/node_modules
@@ -21,6 +22,7 @@ services:
     environment:
       - JSON_FILE_PATH=secrets/list.json
       - MODULE=fake
+      - SEED=4
   echo:
     image: mendhak/http-https-echo
     ports:

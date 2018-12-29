@@ -4,7 +4,6 @@ const axios = require('axios')
 // Pure Imports
 const query = require('querystring')
 const { encaseP2, resolve } = require('fluture')
-const removeAccents = require('remove-accents')
 const { compose, lensProp, over, map, pickAll } = require('ramda')
 // Functions Impure
 const post = encaseP2(axios.post)

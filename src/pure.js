@@ -4,15 +4,17 @@ const {
   merge, over, lensProp, join, isEmpty, not, cond, lenght, gte, equals
 } = require('ramda')
 const { trace, log } = require('@mugos/log')
+const { Random } =  require('./random')
 
-const shuffle = (seed) => compose(
+const createShuffle = (random) => compose(
   map(prop('value')),
   sort((a, b) => a.sort - b.sort),
-  map((a) => ({ sort: seed(), value: a })),
+  map((a) => ({ sort: random.next(), value: a })),
 )
+const shuffle = (seed) => createShuffle(Random.of(seed))
 const builder = ({ giver, receiver }) => ({
   id: giver.id, giver: giver.name, receiver: receiver.name,
-  phone: giver.phone, want: receiver.want,
+  phone: giver.phone, want: receiver.want, deliver: giver.deliver
 })
 const raffle = compose(
   map(builder),

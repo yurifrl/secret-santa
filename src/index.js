@@ -12,7 +12,7 @@ const { nexmoClient } = require('./modules/nexmo')
 const { shuffle, raffle, createMessage } = require('./pure')
 const { engine } = require('./engine')
 // Def Constants
-const MESSAGE = 'o minimo é de R$20 e o máximo R$50, leve em consideração a ultima mensagem'
+const MESSAGE = 'o minimo é de R$20 e o máximo R$50, essa é a mensagem que vale, Bjs'
 // Def Functions Pure
 const fork = (x) => x.fork(console.error, console.log)
 const pickModule = cond([
@@ -22,15 +22,15 @@ const pickModule = cond([
   [ T,                          (_) => (_) => reject('Invalid Module') ]
 ])
 
-const main = (config) => compose(
+const main = (seed) => (config) => compose(
   fork,
   mapRej(x => console.error(x)),
-  t => parallel(10, t),
+  t => parallel(Infinity, t),
   map(pickModule(config)),
   map(createMessage(MESSAGE)),
   sortBy(prop('id')),
   raffle,
-  shuffle(x => Math.random())
+  shuffle(seed)
 )
 
 module.exports = { main }

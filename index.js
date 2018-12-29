@@ -8,6 +8,8 @@ const envs = (name) => process.env[name]
 // Def Constants
 const FILE = JSON.parse(fs.readFileSync(envs('JSON_FILE_PATH'), 'utf8'))
 // Def Modules Config
+
+log('seed --->')(envs('SEED'))
 const config = {
   module: envs('MODULE'),
   twilio: {
@@ -26,4 +28,4 @@ const config = {
   }
 }
 
-main(config)(FILE)
+main(envs('SEED'))(config)(FILE)

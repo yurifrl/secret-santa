@@ -6,7 +6,7 @@ Send Text messages to your friends with their secret santa
 - After filling the secrets
 - run `docker-compose --run --rm <env> sh`
 - then, inside the container `npm i`
-- then `node index.js` it will use the variables you set
+- then `env MODULE=fake node index.js` it will use the variables you set
 
 ## Secret File Values `prod.env` and `test.env`
 - `TWILIO_PHONE`
