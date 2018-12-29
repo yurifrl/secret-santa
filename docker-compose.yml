@@ -1,12 +1,18 @@
 version: '3.7'
 services:
-  test:
+  test: &base
     image: node:alpine
     working_dir: /usr/local/src
     env_file:
-      - secrets/values.env
+      - secrets/test.env
     environment:
-      - CSV_FILE_PATH=secrets/list.json
+      - CSV_FILE_PATH=sample-list.json
     volumes:
       - .:/usr/local/src
       - /usr/local/src/node_modules
+  prd:
+    <<: *base
+    env_file:
+      - secrets/prod.env
+    environment:
+      - CSV_FILE_PATH=secrets/list.json

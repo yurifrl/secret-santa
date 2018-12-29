@@ -22,7 +22,7 @@ const raffle = compose(
 )
 const wantLens = lensProp('want')
 const createMessage = (finalMessage) =>
-  ({ giver, receiver, want }) => `Olá ${giver}, o seu amigo secreto é ${receiver}, aqui está a lista de desejos de ${receiver}: ${want} ${finalMessage}`
+  ({ giver, receiver, want }) => `Olá ${giver}, o seu amigo secreto é ${receiver}, aqui está a lista de desejos de ${receiver}: "${want}" ${finalMessage}`
 
 
 module.exports = { shuffle, raffle, createMessage }

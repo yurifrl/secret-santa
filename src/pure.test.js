@@ -24,7 +24,7 @@ test('Create a nice message', t => {
 
   const result = createMessage('o valor limite é de R$10,00')(item)
 
-  const expected = 'Olá Marie, o seu amigo secreto é Yuri, aqui está a lista de desejos de Yuri: pato,water o valor limite é de R$10,00'
+  const expected = 'Olá Marie, o seu amigo secreto é Yuri, aqui está a lista de desejos de Yuri: "pato,water" o valor limite é de R$10,00'
 
   t.is(result, expected)
 })
