@@ -12,12 +12,19 @@ services:
     volumes:
       - .:/usr/local/src
       - node_modules:/usr/local/src/node_modules
+    depends_on:
+      - echo
   prd:
     <<: *base
     env_file:
       - secrets/prod.env
     environment:
       - JSON_FILE_PATH=secrets/list.json
+  echo:
+    image: mendhak/http-https-echo
+    ports:
+        - "8080:80"
+        - "8443:443"
 
 volumes:
   node_modules:

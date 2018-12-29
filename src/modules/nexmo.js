@@ -3,26 +3,25 @@ const { log, trace } = require('@mugos/log')
 const axios = require('axios')
 // Pure Imports
 const query = require('querystring')
-const { encaseP3, resolve } = require('fluture')
+const { encaseP2, resolve } = require('fluture')
 const removeAccents = require('remove-accents')
 const { compose, lensProp, over, map, pickAll } = require('ramda')
 // Functions Impure
-const post = encaseP3(axios.post)
+const post = encaseP2(axios.post)
 
 // Private
-const URL = 'https://rest.nexmo.com/sms/json'
+// const URL = 'https://rest.nexmo.com/sms/json'
+const URL = 'http://echo'
 
-const sendSms = (payload) =>
-  resolve('ok')
-  // post(URL, {}, payload)
+const sendSms = (data) =>
+  post(URL, data)
 
 // Public
 const parse = ({ nexmo: { from, apiKey, apiSecret } }) => compose(
+  ({ from, text, to, api_key, api_secret }) => query.stringify({ from, to, api_key, api_secret }).concat(`&text=${text}`),
   trace,
   ({ form, body, phone }) => ({ from, text: body, to: phone, api_key: apiKey, api_secret: apiSecret }),
-  // over(lensProp('body'), query.escape),
-  // over(lensProp('body'), str => str.replace(/R\$/g, '')),
-  // over(lensProp('body'), removeAccents),
+  over(lensProp('body'), query.escape),
   over(lensProp('from'), x => from),
 )
 const call = ({ client}) => compose(
