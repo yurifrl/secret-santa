@@ -21,7 +21,7 @@ services:
       - secrets/prod.env
     environment:
       - JSON_FILE_PATH=secrets/list.json
-      - MODULE=fake
+      - MODULE=twillio
       - SEED=4
   echo:
     image: mendhak/http-https-echo
