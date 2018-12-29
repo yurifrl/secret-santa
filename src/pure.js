@@ -11,7 +11,7 @@ const shuffle = (seed) => compose(
   map((a) => ({ sort: seed(), value: a })),
 )
 const builder = ({ a, b }) => ({
-  id: a.id, giver: a.name, receiver: b.name,
+  id: a.id, giver: b.name, receiver: a.name,
   phone: b.phone, want: b.want,
 })
 const raffle = compose(

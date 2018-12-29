@@ -12,30 +12,30 @@ test('Shuffle a list of people', t => {
   const result = raffle(list)
 
   t.deepEqual(result, [
-    { id: 1, giver: 'Marie', receiver: 'Yuri', phone: '555-555-552', want: ['batata', 'water'] },
-    { id: 2, giver: 'Yuri', receiver: 'Malala', phone: '555-555-553', want: ['human rights'] },
-    { id: 3, giver: 'Malala', receiver: 'Gabriel', phone: '556-555-551', want: ['coca'] },
-    { id: 4, giver: 'Gabriel', receiver: 'Marie', phone: '555-555-555', want: ['nobel'] }
+    { id: 1, receiver: 'Marie', giver: 'Yuri', phone: '555-555-552', want: ['batata', 'water'] },
+    { id: 2, receiver: 'Yuri', giver: 'Malala', phone: '555-555-553', want: ['human rights'] },
+    { id: 3, receiver: 'Malala', giver: 'Gabriel', phone: '556-555-551', want: ['coca'] },
+    { id: 4, receiver: 'Gabriel', giver: 'Marie', phone: '555-555-555', want: ['nobel'] }
   ])
 })
 
 test('Create a nice message', t => {
-  const item = { giver: 'Marie', receiver: 'Yuri', phone: '222-222-222', want: ['pato', 'water'] }
+  const item = { receiver: 'Marie', giver: 'Yuri', phone: '222-222-222', want: ['pato', 'water'] }
 
   const result = createMessage('o valor limite é de R$10,00')(item)
 
-  const expected = 'Olá Marie, o seu amigo secreto é Yuri, aqui está a lista de desejos de Yuri: "pato,water" o valor limite é de R$10,00'
+  const expected = 'Olá Yuri, o seu amigo secreto é Marie, aqui está a lista de desejos de Marie: "pato,water" o valor limite é de R$10,00'
 
-  t.is(result, expected)
+  t.is(result.body, expected)
 })
 
 
 test('Create a nice message when want empty', t => {
-  const item = { giver: 'Marie', receiver: 'Yuri', phone: '222-222-222', want: [] }
+  const item = { receiver: 'Marie', giver: 'Yuri', phone: '222-222-222', want: [] }
 
   const result = createMessage('o valor limite é de R$10,00')(item)
 
-  const expected = 'Olá Marie, o seu amigo secreto é Yuri, o valor limite é de R$10,00'
+  const expected = 'Olá Yuri, o seu amigo secreto é Marie, o valor limite é de R$10,00'
 
-  t.is(result, expected)
+  t.is(result.body, expected)
 })
