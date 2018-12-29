@@ -29,3 +29,13 @@ test('Create a nice message', t => {
   t.is(result, expected)
 })
 
+
+test('Create a nice message when want empty', t => {
+  const item = { giver: 'Marie', receiver: 'Yuri', phone: '222-222-222', want: [] }
+
+  const result = createMessage('o valor limite é de R$10,00')(item)
+
+  const expected = 'Olá Marie, o seu amigo secreto é Yuri, o valor limite é de R$10,00'
+
+  t.is(result, expected)
+})

@@ -1,7 +1,7 @@
 const {
   compose, map, sort, prop, head, tail, ifElse, length, concat, reduce, reduced,
   transduce, flip, append, take, reduceRight, mapAccum, mapAccumRight, zip, range,
-  merge, over, lensProp, join
+  merge, over, lensProp, join, isEmpty, not, cond, lenght, gte, equals
 } = require('ramda')
 const { trace, log } = require('@mugos/log')
 
@@ -20,9 +20,11 @@ const raffle = compose(
   ({ a, b }) => ({ a, b, size: range(0, length(a)) }),
   x => ({ a: x, b: append(head(x), tail(x)) }),
 )
-const wantLens = lensProp('want')
-const createMessage = (finalMessage) =>
-  ({ giver, receiver, want }) => `Olá ${giver}, o seu amigo secreto é ${receiver}, aqui está a lista de desejos de ${receiver}: "${want}" ${finalMessage}`
-
+const defaultMessage = (finalMessage) => ({ giver, receiver, want }) => `Olá ${giver}, o seu amigo secreto é ${receiver}, aqui está a lista de desejos de ${receiver}: "${want}" ${finalMessage}`
+const noWantMessage = (finalMessage) => ({ giver, receiver }) => `Olá ${giver}, o seu amigo secreto é ${receiver}, ${finalMessage}`
+const createMessage = (finalMessage) => cond([
+  [ compose(not, isEmpty, prop('want')), defaultMessage(finalMessage) ],
+  [ compose(isEmpty, prop('want')), noWantMessage(finalMessage) ],
+])
 
 module.exports = { shuffle, raffle, createMessage }
