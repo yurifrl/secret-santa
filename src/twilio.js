@@ -5,7 +5,9 @@ const { log, trace } = require('@mugos/log')
 const Future = require('fluture')
 const { compose, apply } = require('ramda')
 //
-const call = (client) => (payload) => Future((reject, resolve) => { client.messages.create(payload).then(resolve).catch(resolve).done() })
+const call = (client) => (payload) => Future((reject, resolve) => {
+  client.messages.create(payload).then(resolve).catch(reject).done()
+})
 const createClient = (token) => (id) => compose(
   call,
   apply(twilio),

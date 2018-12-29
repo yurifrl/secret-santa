@@ -1,3 +1,6 @@
 [
-  { "id": 1, "name": "Yuri", "phone": "555-555-552", "want": ["batata", "water"] }
+  { "id": 1, "name": "Marie", "phone": "+555-555-555", "want": ["nobel"] },
+  { "id": 2, "name": "Yuri", "phone": "+555-555-552", "want": ["batata", "water"] },
+  { "id": 3, "name": "Malala", "phone": "+555-555-553", "want": ["human rights"] },
+  { "id": 4, "name": "Gabriel", "phone": "+556-555-551", "want": ["coca"] }
 ]

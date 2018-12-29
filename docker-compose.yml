@@ -3,16 +3,20 @@ services:
   test: &base
     image: node:alpine
     working_dir: /usr/local/src
+    command: npm test
     env_file:
       - secrets/test.env
     environment:
       - CSV_FILE_PATH=sample-list.json
     volumes:
       - .:/usr/local/src
-      - /usr/local/src/node_modules
+      - node_modules:/usr/local/src/node_modules
   prd:
     <<: *base
     env_file:
       - secrets/prod.env
     environment:
       - CSV_FILE_PATH=secrets/list.json
+
+volumes:
+  node_modules:

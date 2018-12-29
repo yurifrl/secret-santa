@@ -26,6 +26,7 @@ const fork = (x) => x.fork(console.error, console.log)
 compose(
   fork,
   mapRej(x => console.error(x)),
+  map(map(prop('to'))),
   x => parallel(10, x),
   map(client),
   map(parser),
