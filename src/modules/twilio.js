@@ -11,10 +11,6 @@ const { compose, apply, lensProp, over, map, pickAll, tap, propEq, ifElse } = re
 const messageCreate = (client) => (payload) => Future((reject, resolve) => {
   client.messages.create(payload).then(resolve).catch(reject).done()
 })
-const messageCreateCluster = (client) => compose(
-  map(pickAll(['to', 'priceUnit', 'price'])),
-  messageCreate(client)
-)
 // Public
 const parse = ({ twilio: { from } }) => compose(
   ({ body, from, phone, giver, deliver }) => ({ body, from, to: phone, giver, deliver }),
@@ -23,7 +19,8 @@ const parse = ({ twilio: { from } }) => compose(
 const handleError = (payload) => (e) => resolve({ failed: `Failed to deliver to ${payload.giver}` })
 const call = ({ client }) => (payload) => compose(
   chainRej(handleError(payload)),
-  ifElse(propEq('deliver', true), messageCreateCluster(client), ({ giver }) => resolve({ success: `Message already delivered to giver` })),
+  map(pickAll(['to', 'priceUnit', 'price'])),
+  messageCreate(client),
 )(payload)
 const create = ({ twilio: { accountId, token } }) => twilio(accountId, token)
 
