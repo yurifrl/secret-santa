@@ -6,7 +6,7 @@
   "dependencies": {
     "@mugos/ftw": "^0.13.5",
     "@mugos/log": "^1.0.4",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "fluture": "^10.3.0",
     "ramda": "^0.26.1",
     "random-seed": "^0.3.0",
